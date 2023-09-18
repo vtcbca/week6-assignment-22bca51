@@ -1,0 +1,172 @@
+import csv
+
+1. Read Python.txt file and Print it in Reverse.
+
+with open('C:\\22BCA51\\PYTHON\\GITHUB\\WEEK6\\Python.txt', 'r') as file:
+    content = file.read()
+    reversed_content = content[::-1]
+    print(reversed_content)
+
+OUTPUT :
+	.segaugnal gnimmargorp ralupop tsom eht fo eno s'ti woN .yldipar gniworg si nohtyP fo ytiralupop ehT
+	.segaugnal gnimmargorp eht fo tsom naht edoc fo senil rewef ni smargorp etirw ot uoy swolla nohtyP
+	.no os dna ,tnempoleved noitacilppa dipar ,ecneics atad ,snoitacilppa bew gnipoleved rof desu s'tI .snoitacilppa fo tol a sah nohtyP
+	.elbadaer yrev si edoc dna ysae si xatnys stI .nrael ot ysae si nohtyP
+	?nohtyP nraeL yhW
+	.srennigeb rof nrael ot egaugnal taerg a nohtyP sekam sihT
+	.xatnys esu-ot-ysae ,elpmis a sah nohtyP ,srennigeb rof yletanutroF
+	.sdleif rehto ynam dna ,snoitacilppa potksed ,tnempoleved bew ,gninrael enihcam ni desu si tI
+	.1991 ni desaeler dna ,mussoR nav odiuG yb detaerc saw tI
+	.egaugnal gnimmargorp esoprup-lareneg ralupop a si nohtyP
+
+
+2. Read Python.txt file and Print total number of lines and words in it.
+
+with open('C:\\22BCA51\\PYTHON\\GITHUB\\WEEK6\\Python.txt', 'r') as file:
+    lines = file.readlines()
+    num_lines = len(lines)
+    words = content.split()
+    num_words = len(words)
+    
+    print(f"Total number of lines: {num_lines}")
+    print(f"Total number of words: {num_words}")
+
+OUTPUT :
+	Total number of lines: 10
+	Total number of words: 121
+
+
+3. Read Python.txt file and Print unique word with its count.
+
+with open('C:\\22BCA51\\PYTHON\\GITHUB\\WEEK6\\Python.txt', 'r') as file:
+    content = file.read()
+    words = content.split()
+    word_count = {}
+    
+    for word in words:
+        word_count[word] = word_count.get(word, 0) + 1
+    
+    for word, count in word_count.items():
+        print(f"{word}: {count}")
+
+    
+    	for word in words:
+        	word_count[word] = word_count.get(word, 0) + 1
+    
+    	for word, count in word_count.items():
+        	print(f"{word}: {count}")
+
+OUTPUT :
+	Python: 7
+	is: 6
+	a: 4
+	popular: 2
+	general-purpose: 1
+	programming: 3
+	language.: 1
+	It: 2
+	was: 1
+	created: 1
+	by: 1
+	Guido: 1
+	van: 1
+	Rossum,: 1
+	and: 4
+	released: 1
+	in: 3
+	1991.: 1
+	used: 2
+	machine: 1
+	learning,: 1
+	web: 2
+	development,: 2
+	desktop: 1
+	applications,: 2
+	many: 1
+	other: 1
+	fields.: 1
+	Fortunately: 1
+	for: 3
+	beginners,: 1
+	has: 2
+	simple,: 1
+	easy-to-use: 1
+	syntax.: 1
+	This: 1
+	makes: 1
+	great: 1
+	language: 1
+	to: 3
+	learn: 1
+	beginners.: 1
+	Why: 1
+	Learn: 1
+	Python?: 1
+	easy: 2
+	learn.: 1
+	Its: 1
+	syntax: 1
+	code: 2
+	very: 1
+	readable.: 1
+	lot: 1
+	of: 5
+	applications.: 1
+	It's: 1
+	developing: 1
+	data: 1
+	science,: 1
+	rapid: 1
+	application: 1
+	so: 1
+	on.: 1
+	allows: 1
+	you: 1	
+	write: 1
+	programs: 1
+	fewer: 1
+	lines: 1
+	than: 1
+	most: 2
+	the: 2
+	languages.: 2
+	The: 1
+	popularity: 1
+	growing: 1
+	rapidly.: 1
+	Now: 1
+	it's: 1
+	one: 1
+	
+
+4. Read Python.txt file and Print largest and smallest word from it.
+
+with open('C:\\22BCA51\\PYTHON\\GITHUB\\WEEK6\\Python.txt', 'r') as file:
+    content = file.read()
+    words = content.split()
+    
+    if words:
+        smallest_word = min(words, key=len)
+        largest_word = max(words, key=len)
+        print(f"Smallest word: {smallest_word}")
+        print(f"Largest word: {largest_word}")
+    else:
+        print("No words found in the file.")
+
+OUTPUT :
+	Smallest word: a
+	Largest word: general-purpose
+
+
+5. Read Python.txt file. Convert it into upper case and write into another file "Python_Upper.txt"
+
+with open('C:\\22BCA51\\PYTHON\\GITHUB\\WEEK6\\Python.txt', 'r') as input_file, open('Python_Upper.txt', 'w') as output_file:
+    content = input_file.read()
+    upper_case_content = content.upper()
+    output_file.write(upper_case_content)
+    
+print("File 'Python.txt' converted to upper case and saved as 'Python_Upper.txt'.")
+
+OUTPUT :
+	File 'Python.txt' converted to upper case and saved as 'Python_Upper.txt'.
+
