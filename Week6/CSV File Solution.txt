@@ -1,0 +1,147 @@
+# def Function to calculate total marks and grade
+
+def calculate_grade(marks):
+    total_marks = sum(marks)
+    percentage = total_marks / len(marks)
+
+    if percentage >= 80:
+        grade = 'Distinction'
+    elif 70 <= percentage <= 79:
+        grade = 'First'
+    elif 60 <= percentage <= 60:
+        grade = 'Second'
+    elif 50 <= percentage <= 59:
+        grade = 'Third'
+    elif 40 <= percentage <= 49:
+        grade = 'Pass'
+    else:
+        grade = 'Fail'
+
+    return total_marks, grade
+
+1. Create a result table which contain student id, student name and 5 subject marks. 
+2. Enter 10 studnet details with its marks.
+
+result_table = []
+for i in range(1, 11):
+    student_id = i
+    student_name = input(f"Enter Student {i}'s Name: ")
+    subject_marks = []
+    for j in range(5):
+        subject_marks.append(int(input(f"Enter marks for Subject {j + 1}: ")))
+
+    total_marks, grade = calculate_grade(subject_marks)
+
+    result_table.append([student_id, student_name] + subject_marks +
+[total_marks, grade])
+
+OUTPUT :
+	Enter Student 1's Name: Zaid
+	Enter marks for Subject 1: 70
+	Enter marks for Subject 2: 63
+	Enter marks for Subject 3: 75
+	Enter marks for Subject 4: 67
+	Enter marks for Subject 5: 65
+	Enter Student 2's Name: Roshan
+	Enter marks for Subject 1: 82
+	Enter marks for Subject 2: 79
+	Enter marks for Subject 3: 84
+	Enter marks for Subject 4: 74
+	Enter marks for Subject 5: 80
+	Enter Student 3's Name: Jenil
+	Enter marks for Subject 1: 78
+	Enter marks for Subject 2: 81
+	Enter marks for Subject 3: 90
+	Enter marks for Subject 4: 82
+	Enter marks for Subject 5: 78
+	Enter Student 4's Name: Pal
+	Enter marks for Subject 1: 45
+	Enter marks for Subject 2: 40
+	Enter marks for Subject 3: 50
+	Enter marks for Subject 4: 49
+	Enter marks for Subject 5: 44
+	Enter Student 5's Name: Ankit
+	Enter marks for Subject 1: 55
+	Enter marks for Subject 2: 59
+	Enter marks for Subject 3: 48
+	Enter marks for Subject 4: 51
+	Enter marks for Subject 5: 60
+	Enter Student 6's Name: Nikunj
+	Enter marks for Subject 1: 89
+	Enter marks for Subject 2: 82
+	Enter marks for Subject 3: 85
+	Enter marks for Subject 4: 83	
+	Enter marks for Subject 5: 88
+	Enter Student 7's Name: Dixit
+	Enter marks for Subject 1: 69
+	Enter marks for Subject 2: 61
+	Enter marks for Subject 3: 57
+	Enter marks for Subject 4: 65
+	Enter marks for Subject 5: 67
+	Enter Student 8's Name: Jay
+	Enter marks for Subject 1: 30
+	Enter marks for Subject 2: 33
+	Enter marks for Subject 3: 25
+	Enter marks for Subject 4: 29
+	Enter marks for Subject 5: 31	
+	Enter Student 9's Name: Kajal
+	Enter marks for Subject 1: 79
+	Enter marks for Subject 2: 82
+	Enter marks for Subject 3: 88
+	Enter marks for Subject 4: 84
+	Enter marks for Subject 5: 86
+	Enter Student 10's Name: Hiren
+	Enter marks for Subject 1: 59
+	Enter marks for Subject 2: 63
+	Enter marks for Subject 3: 68
+	Enter marks for Subject 4: 63
+	Enter marks for Subject 5: 65
+	
+3. Dump table into csv file "result.csv".
+
+with open('c:\\sqlite3\\result.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['Student ID', 'Student Name', 'Subject 1',
+'Subject 2', 'Subject 3', 'Subject 4', 'Subject 5', 'Total Marks',
+'Grade'])
+    writer.writerows(result_table)
+
+
+4. Read result.csv file and Print Total Marks and Grade of each student. Also Append Total Marks and Grade column into result.csv file.
+
+with open('c:\\sqlite3\\result.csv', 'r') as file:
+    reader = csv.reader(file)
+    next(reader)  # Skip header row
+    for row in reader:
+        student_id, student_name, *subject_marks, total_marks, grade = row
+        print(f"Student ID: {student_id}, Student Name:
+{student_name}, Total Marks: {total_marks}, Grade: {grade}")
+
+OUTPUT :
+	Student ID: 1, Student Name:Zaid, Total Marks: 340, Grade: First
+	Student ID: 2, Student Name:Roshan, Total Marks: 399, Grade: First
+	Student ID: 3, Student Name:Jenil, Total Marks: 409, Grade: Distinction
+	Student ID: 4, Student Name:Pal, Total Marks: 228, Grade: Pass
+	Student ID: 5, Student Name:Ankit, Total Marks: 273, Grade: Third
+	Student ID: 6, Student Name:Nikunj, Total Marks: 427, Grade: Distinction
+	Student ID: 7, Student Name:Dixit, Total Marks: 319, Grade: Fail
+	Student ID: 8, Student Name:Jay, Total Marks: 148, Grade: Fail
+	Student ID: 9, Student Name:Kajal, Total Marks: 419, Grade: Distinction
+	Student ID: 10, Student Name:Hiren, Total Marks: 318, Grade: Fail
+
+
+5. List out Top 3 Student id and name with its percentage.
+
+sorted_results = sorted(result_table, key=lambda x: x[-2],
+reverse=True)  # Sort by total marks
+print("\nTop 3 Students:")
+for i in range(3):
+    student_id, student_name, *_, total_marks, grade = sorted_results[i]
+    percentage = (int(total_marks) / 500) * 100
+    print(f"Student ID: {student_id}, Student Name: {student_name},
+Percentage: {percentage}%")
+OUTPUT :
+	Top 3 Students:
+	Student ID: 6, Student Name: Nikunj,Percentage: 85.39999999999999%
+	Student ID: 9, Student Name: Kajal,Percentage: 83.8%
+	Student ID: 3, Student Name: Jenil,Percentage: 81.8%
